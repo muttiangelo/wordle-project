@@ -1,31 +1,35 @@
 from colors_lib import bcolors
 import random
 
-lista_de_palavras = []
-l = open("Lista-de-Palavras.txt", "r")
-for i in range(len(l)):
-    # if(len(l.readline(i)) == 5):
-    lista_de_palavras.append(l.readline(i))
-
 lista = ["navio", "tenis", "mesmo", "carro"]
-word = lista_de_palavras[random.randint(0, len(lista_de_palavras))]
-def wordle():
-    word_input = input('Digite uma palavra: ')
+word = lista[random.randint(0, len(lista) -1)]
 
+def wordle():
+    word_input = input("Digite uma palavra: ")
     if len(word_input) == 5:
+        tentativas = 0
+        palavra = ""
         for i in range(len(word_input)):
             if word_input[i] == word[i]:
-                print(f"{bcolors.OKGREEN}" + word_input[i] + bcolors.ENDC)
+                palavra = palavra + f"{bcolors.OKGREEN}" + word_input[i] + bcolors.ENDC
             elif word_input[i] in word:
-                print(f"{bcolors.WARNING}" + word_input[i] + bcolors.ENDC)
+                palavra = palavra + f"{bcolors.WARNING}" + word_input[i] + bcolors.ENDC
             else:
-                print(f"{bcolors.RED}" + word_input[i] + bcolors.ENDC)
+                palavra = palavra + f"{bcolors.RED}" + word_input[i] + bcolors.ENDC
+            tentativas+=1
+        print(palavra)
+        if word_input == word:
+            print("Voce acertou")
+
     else:
         print(f"{bcolors.WARNING}" + "palavra precisa conter 5 letras" + bcolors.ENDC)
-# wordle()
 
 tentativas = 0
 
-while(tentativas < 6):
+
+while(True):
     wordle()
-    tentativas += 1
+    tentativas +=1
+    if tentativas == 6:
+        print("Voce falhou")
+        break
