@@ -3,5 +3,5 @@ a wordle like project in python
 
 
 issues:
-[]- break the code when guesses the word
-[]- print the word in the same line
+[] Only allow to input a word that is in the list
+[] Fix the program printing the letter status multiple times in a word
