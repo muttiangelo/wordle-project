@@ -3,5 +3,5 @@ a wordle like project in python
 
 
 issues:
-[] Only allow to input a word that is in the list
+[x] Only allow to input a word that is in the list
 [] Fix the program printing the letter status multiple times in a word
